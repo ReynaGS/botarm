@@ -9,10 +9,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-console.log("Esto no se sabe donde vayas a parar!")
-app.use(express.static("botarm/build"));
-// }
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("botarm/build"));
+}
 // Add routes, both API and view
 app.use(routes);
 app.get("/test", function (req, res) {
