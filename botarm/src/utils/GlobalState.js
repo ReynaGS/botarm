@@ -7,12 +7,13 @@ import {
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
-const reducer = (state, action) => {
-    switch (action.type) {
+const reducer = (state, params) => {
+    console.log(params)
+    switch (params.action) {
         case SET_SENSOR_DATA:
             return {
                 ...state,
-                sensorStatus: action.sensorStatus,
+                sensorStatus: params.sensorStatus,
                 
             };
         default:
@@ -22,7 +23,9 @@ const reducer = (state, action) => {
 
 const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
-        sensorStatus: 0, 
+        sensorStatus: 
+        
+        1, 
     });
 
     return <Provider value={[state, dispatch]} {...props} />;
