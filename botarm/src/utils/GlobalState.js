@@ -8,7 +8,7 @@ const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, params) => {
-    console.log(params)
+    console.log()
     switch (params.action) {
         case SET_SENSOR_DATA:
             return {
