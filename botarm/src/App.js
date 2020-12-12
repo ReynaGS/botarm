@@ -6,6 +6,7 @@ import './App.css';
 import ReadSensorTest from "./components/ReadSensorTest";
 import NavBar from "./components/NavBar";
 import './app.sass';
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <DisplaySensorState/>
           <ReadSensorTest/>
       </div>
+      <Footer/>
       </StoreProvider>
     </div>
   );
