@@ -7,21 +7,24 @@ import ReadSensorTest from "./components/ReadSensorTest";
 import NavBar from "./components/NavBar";
 import './app.sass';
 import Footer from "./components/Footer";
+import SensorCard from "./components/SensorCard";
+import SensorCardContainer from "./components/SensorCardContainer"; 
 
 function App() {
   return (
     <div className="App">
       <StoreProvider> 
         <NavBar/>
-        <div>
-          <h1 className="title is-5 has-text-danger-dark" > TAMO EN VIVO! </h1>
-          <DisplaySensorState/>
-          <ReadSensorTest/>
-      </div>
-      <Footer/>
+        <div style={{ margin: "36px" }}>
+        <SensorCardContainer /> 
+        </div>
+        <Footer/>
       </StoreProvider>
     </div>
   );
 }
 
 export default App;
+
+      
+
