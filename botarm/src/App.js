@@ -5,7 +5,8 @@ import DisplaySensorState from "./components/DisplaySensorState"
 import './App.css';
 import ReadSensorTest from "./components/ReadSensorTest";
 import NavBar from "./components/NavBar";
-import './app.sass';
+//import './app.sass';
+import 'bulma/css/bulma.css'
 import Footer from "./components/Footer";
 import SensorCard from "./components/SensorCard";
 import SensorCardContainer from "./components/SensorCardContainer"; 

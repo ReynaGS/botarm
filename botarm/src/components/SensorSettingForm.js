@@ -2,11 +2,17 @@
 import React, {useRef} from "react"; 
 
 
+
 function SensorSettingForm (){
+
+    const konnectedURL = useRef()
     const zones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     const ZoneOptions = zones.map(function (zone) {
         return (<option>Zone: {zone} </option>)
     })
+    const saveHandle = ()=>{
+        console.log(konnectedURL)
+    }
     return (
          <div>
             <div class="card">
@@ -15,7 +21,7 @@ function SensorSettingForm (){
                     <div className="field">
                         <label className="label">Konnected Device URL</label>
                         <div className="control has-icons-left has-icons-right">
-                            <input className="input is-success" type="text" placeholder="Konnected URL"  />
+                            <input ref={konnectedURL} className="input is-success" type="text" placeholder="Konnected URL"  />
                             <span className="icon is-small is-left">
                                 <i className="fas fa-envelope"></i>
                             </span>
@@ -77,7 +83,7 @@ function SensorSettingForm (){
                 
                     
                         <div className="control mt-4 ">
-                            <button className="button is-link is-light ">Save</button>
+                            <button className="button is-link is-light " onClick={saveHandle}>Save</button>
                         
                     </div>
                 </div>
