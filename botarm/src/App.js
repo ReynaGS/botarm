@@ -10,13 +10,21 @@ import Footer from "./components/Footer";
 import SensorCard from "./components/SensorCard";
 import SensorCardContainer from "./components/SensorCardContainer"; 
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import History from "./pages/History";
+import Signup from "./pages/Signup";
+import SensorSetting from "./pages/SensorSetting"; 
 
 function App() {
   return (
     <div className="App">
       <StoreProvider> 
         <NavBar/>
-        <Home/>
+        {/* <Home/> */}
+        {/* <Login/> */}
+        {/* <History/> */}
+        {/* <Signup/> */}
+        <SensorSetting/>
         <Footer/>
       </StoreProvider>
     </div>

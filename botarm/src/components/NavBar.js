@@ -24,9 +24,7 @@ function NavBar (){
                             RG
                         </a>
                         <div className="navbar-dropdown">
-                            <a className="navbar-item">
-                                Profile
-          </a>
+                            
                             <a className="navbar-item">
                                 History
           </a>

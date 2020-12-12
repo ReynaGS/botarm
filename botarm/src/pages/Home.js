@@ -6,6 +6,7 @@ function Home(){
     return(
         <div>
             <div style={{margin: "36px"}}>
+                
         <button className="button is-large"> Activate System / Disable System </button>
             </div>
             <div style={{ margin: "36px" }}>
