@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 app.get("/test", function (req, res) {
     console.log("Probando");
-    res.send("hello");
+    res.send("hello word");
 });
 
 // Connect to the Mongo DB
