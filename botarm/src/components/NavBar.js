@@ -28,6 +28,9 @@ function NavBar (){
                                 Profile
           </a>
                             <a className="navbar-item">
+                                History
+          </a>
+                            <a className="navbar-item">
                                 Sensor Settings
           </a>
                             <a className="navbar-item">

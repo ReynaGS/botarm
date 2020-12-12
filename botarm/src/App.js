@@ -9,15 +9,14 @@ import './app.sass';
 import Footer from "./components/Footer";
 import SensorCard from "./components/SensorCard";
 import SensorCardContainer from "./components/SensorCardContainer"; 
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
       <StoreProvider> 
         <NavBar/>
-        <div style={{ margin: "36px" }}>
-        <SensorCardContainer /> 
-        </div>
+        <Home/>
         <Footer/>
       </StoreProvider>
     </div>
