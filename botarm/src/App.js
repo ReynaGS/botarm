@@ -30,6 +30,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/settings" component={SensorSetting} />
             <Route exact path="/history" component={History} />
+            <Route exact path="/logout" component={Login} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
         <Footer/>

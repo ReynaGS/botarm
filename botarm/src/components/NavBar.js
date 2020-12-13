@@ -5,7 +5,7 @@ function NavBar (){
     return (
         <nav className="navbar is-success" role="navigation" aria-label="main navigation" >
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="/">
                     <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"/>
                 </a>
 
@@ -25,13 +25,13 @@ function NavBar (){
                         </a>
                         <div className="navbar-dropdown">
                             
-                            <a className="navbar-item">
+                            <a className="navbar-item" href="/history">
                                 History
           </a>
-                            <a className="navbar-item">
+                            <a className="navbar-item" href="/settings">
                                 Sensor Settings
           </a>
-                            <a className="navbar-item">
+                            <a className="navbar-item" href="/logout">
                                 Logout
           </a>
           </div>
