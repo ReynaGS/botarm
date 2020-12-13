@@ -65,7 +65,7 @@ function SignupForm()
                     </div>
                     <div className="field is-grouped" >
                         <div className="control">
-                            <a className=" button is-link"> Login </a>
+                            <a className=" button is-link" href="/login"> Login </a>
                         </div>
                         <div className="control">
                             <button className="button is-link is-light">Sign Up</button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect} from "react";
 import logo from './logo.svg';
 import { StoreProvider } from "./utils/GlobalState";
 import DisplaySensorState from "./components/DisplaySensorState"
@@ -16,12 +16,51 @@ import History from "./pages/History";
 import Signup from "./pages/Signup";
 import SensorSetting from "./pages/SensorSetting"; 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useStoreContext } from "./utils/GlobalState";
+import axios from "axios"
+
 
 function App() {
+
+  const [state, dispatch] = useStoreContext();
+
+  useEffect(() => {
+    checkLogin();
+    loadMessage();
+  }, [state.apiToken])
+
+  const checkLogin = () => {
+    // get the user from local storage
+    const user = JSON.parse(localStorage.getItem("user"));
+    // is there a user?
+    if (user) {
+      // put that user in the state
+      dispatch({
+        type: "LOGIN",
+        email: user.email,
+        apiToken: user.token
+      });
+    }
+  }
+
+  const loadMessage = () => {
+    axios.get("/api/welcome", {
+      headers: {
+        Authorization: `Bearer ${state.apiToken}`
+      }
+    }).then(({ data }) => {
+      const { message } = data;
+      dispatch({ type: "GET_MESSAGE", message })
+    })
+  }
+
+
+
+
   return (
     <Router>
     <div className="App">
-      <StoreProvider> 
+     
         <NavBar/>
         <Switch>
             <Route exact path="/" component={Home} />
@@ -34,7 +73,7 @@ function App() {
             {/* <Route component={NoMatch} /> */}
           </Switch>
         <Footer/>
-      </StoreProvider>
+      
     </div>
     </Router>
   );

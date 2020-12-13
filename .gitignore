@@ -1,3 +1,4 @@
 node_modules/
 .DS_Store
 MERNHerokuDeploy.md
+.env

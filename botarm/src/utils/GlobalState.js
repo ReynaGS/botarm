@@ -1,7 +1,9 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
     READ_SENSOR,
+    LOGIN,
     SET_SENSOR_DATA,
+    LOGOUT
 } from "./actions";
 
 const StoreContext = createContext();
@@ -16,6 +18,20 @@ const reducer = (state, params) => {
                 sensorStatus: params.sensorStatus,
                 
             };
+            case LOGIN:
+            return {
+                ...state,
+                email: params.email,
+                apiToken: params.apiToken
+            }
+        case LOGOUT:
+            
+            return {
+                ...state,
+                email: "",
+                apiToken: ""
+            }
+
         default:
             return state;
     }
