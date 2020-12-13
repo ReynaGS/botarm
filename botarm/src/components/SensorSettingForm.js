@@ -14,6 +14,7 @@ function SensorSettingForm (){
     const zoneName= useRef()
     const [sensorStateConfig, setSensorConfig] = useState([]);
     const [zonesState, setZonesState] = useState(zones);
+
     
     const saveHandle = ()=>{
         console.log(konnectedURL.current.value)
@@ -87,7 +88,7 @@ function SensorSettingForm (){
                                         <div class="select is-primary">
                                             <select ref= {selectZone}>
                                                 {zonesState.map((zone)=>{
-                                                    console.log(zone)
+                                                    
                                                     return (<option  value={zone}>Zone: {zone} </option>)
 
                                                 })}
@@ -114,10 +115,25 @@ function SensorSettingForm (){
                                 <button className="button is-link is-light " onClick={addSensorHandle}>Add Sensor Zone</button>
                             </div>
 
+    
+
                             </div>
                     </div>
 
-                
+                        <div className= "my-6">
+                            
+                            <h3> Defined Zones</h3>
+                        
+
+                            {sensorStateConfig.map((x)=>{
+                                
+                                return( 
+                                <div>
+                                <h6>Zone  { x.zoneNumber } = {x.zoneName} </h6>
+                                
+                                </div> )
+                            })}
+                        </div>
                     
                         <div className="control mt-4 ">
                             <button className="button is-link is-light " onClick={saveHandle}>Save</button>
