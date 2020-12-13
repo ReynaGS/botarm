@@ -1,6 +1,8 @@
 
 import React, {useRef, useState} from "react"; 
 import SelectOption from "../components/SelectOption"
+import API from "../utils/API"
+import { useStoreContext } from "../utils/GlobalState";
 
 const zones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -15,9 +17,19 @@ function SensorSettingForm (){
     const [sensorStateConfig, setSensorConfig] = useState([]);
     const [zonesState, setZonesState] = useState(zones);
 
-    
-    const saveHandle = ()=>{
-        console.log(konnectedURL.current.value)
+    const [state, dispatch] = useStoreContext();
+    const saveHandle = async ()=>{
+        const settings = {
+            url: konnectedURL.current.value,
+            contactPhone: contactPhone.current.value,
+            sensorStateConfig: sensorStateConfig,
+            email: state.email, 
+
+        }
+        console.log(settings)
+        const {data} = await API.createSettings(settings)
+        console.log(data)
+        
 
     }
 
@@ -39,7 +51,7 @@ function SensorSettingForm (){
 
 
             })
-            console.log(isInState)
+            
             return isInState == undefined
         })
 

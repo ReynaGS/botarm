@@ -6,10 +6,10 @@ const apiRoutes = require("./api");
 
 //https://reactrouter.com/web/example/auth-workflow
 // API Routes
-//router.use("/api", apiRoutes);
+router.use("/api", apiRoutes);
 router.use("/auth", authRoutes)
 
-router.use("/api", passport.authenticate('jwt', { session: false }), apiRoutes)
+// router.use("/api", passport.authenticate('jwt', { session: false }), apiRoutes)
 
 
 // If no API routes are hit, send the React app

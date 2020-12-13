@@ -31,11 +31,12 @@ const handleLogin = async (e)=>{
     const apiToken = token;
     console.log(apiToken);
     dispatch({
-        type: LOGIN,
+        action: LOGIN,
         email,
         apiToken: data.token
     });
      localStorage.setItem("user", JSON.stringify({ email, token }));
+     push("/home")
 }
 
     return(

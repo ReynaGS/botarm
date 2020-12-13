@@ -4,12 +4,12 @@ import React from "react";
 function NavBar (){
     return (
         <nav className="navbar is-success" role="navigation" aria-label="main navigation" >
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/">
+            <div className="navbar-brand">
+                <a className="navbar-item" href="/">
                     <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"/>
                 </a>
 
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

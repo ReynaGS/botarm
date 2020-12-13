@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const sensorController = require("../../controllers/sensorsController");
 
-router.route("/all")
+router.route("/")
     .get(sensorController.findAll)
-// .post(sensorController.create);
+
+    .post(sensorController.createSensorSettings);
 
 module.exports = router;

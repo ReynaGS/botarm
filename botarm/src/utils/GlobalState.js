@@ -3,14 +3,15 @@ import {
     READ_SENSOR,
     LOGIN,
     SET_SENSOR_DATA,
-    LOGOUT
+    LOGOUT, 
+    SET_SENSOR_CONFIGURATION,
 } from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, params) => {
-    console.log()
+    console.log(params)
     switch (params.action) {
         case SET_SENSOR_DATA:
             return {
@@ -32,6 +33,15 @@ const reducer = (state, params) => {
                 apiToken: ""
             }
 
+        case SET_SENSOR_CONFIGURATION:
+
+            return {
+                ...state,
+                sensorConfiguration: params.sensorConfiguration,
+                
+            }
+
+
         default:
             return state;
     }
@@ -39,9 +49,17 @@ const reducer = (state, params) => {
 
 const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer(reducer, {
-        sensorStatus: 
-        
-        1, 
+        sensorStatus: 1, 
+        email:"", 
+        apiToken:"",
+        sensorConfiguration: {
+            url: "",
+            contactPhone:"",
+            sensorStateConfig:[], 
+            email: ""
+
+        }
+
     });
 
     return <Provider value={[state, dispatch]} {...props} />;

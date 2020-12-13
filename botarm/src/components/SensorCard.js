@@ -25,10 +25,10 @@ function SensorCard(){
      
     </div>
   </div>
-            <footer class="card-footer">
+            <footer className="card-footer">
                 
-                <a href="#" class="card-footer-item">Edit</a>
-                <a href="#" class="card-footer-item">Remove</a>
+                <a href="#" className="card-footer-item">Edit</a>
+                <a href="#" className="card-footer-item">Remove</a>
             </footer>
 </div>
     )
