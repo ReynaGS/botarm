@@ -88,13 +88,14 @@ function App() {
     console.log(state)
     const { data } = await API.getSensor()
     console.log(data)
-    if (data != null) {
-      dispatch({
-        action: SET_ACTUAL_SENSOR_STATUS,
-        actualSensorState: data
+    console.log("Console log despues de la 90 ------------------------")
+    // if (data != null) {
+    //   dispatch({
+    //     action: SET_ACTUAL_SENSOR_STATUS,
+    //     actualSensorState: data
 
-      });
-    }
+    //   });
+    // }
   }
 
 

@@ -63,9 +63,8 @@ const StoreProvider = ({ value = [], ...props }) => {
             url:"",
             contactPhone:"",
             sensorStateConfig: [],
-            actualSensorState: [] 
-    
-        }
+        },
+        actualSensorState: []
 
 
     });

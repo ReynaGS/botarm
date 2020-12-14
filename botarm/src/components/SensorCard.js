@@ -1,7 +1,23 @@
 import React from "react"; 
-
+import { useStoreContext } from "../utils/GlobalState";
 
 function SensorCard(props){
+  
+
+  const [state, dispatch] = useStoreContext();
+  function isOpenOrClose(){ 
+    var sensorStatus = state.actualSensorState.find((sensor)=>{
+      return sensor.zone == props.config.zoneNumber
+    })
+    if(sensorStatus == undefined){
+      return "Unknown"
+    }
+    if(sensorStatus.state==0){
+      return " Closed "
+    }else return " Open "
+
+  }
+
     return(
 
     <div className="card">
@@ -21,7 +37,7 @@ function SensorCard(props){
     </div>
 
     <div className="content">
-            OPEN!
+           {isOpenOrClose()}
       <br/>
      
     </div>
