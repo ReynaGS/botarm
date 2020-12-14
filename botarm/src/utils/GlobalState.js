@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
-    READ_SENSOR,
     LOGIN,
     SET_SENSOR_DATA,
     LOGOUT, 
     SET_SENSOR_CONFIGURATION,
+    SET_ACTUAL_SENSOR_STATUS
 } from "./actions";
 
 const StoreContext = createContext();
@@ -40,6 +40,13 @@ const reducer = (state, params) => {
                 sensorConfiguration: params.sensorConfiguration,
                 
             }
+        case SET_ACTUAL_SENSOR_STATUS:
+
+            return {
+                ...state,
+                actualSensorState: params.actualSensorState,
+
+            }
 
 
         default:
@@ -55,9 +62,11 @@ const StoreProvider = ({ value = [], ...props }) => {
         sensorConfiguration: {
             url:"",
             contactPhone:"",
-            sensorStateConfig: [], 
+            sensorStateConfig: [],
+            actualSensorState: [] 
     
         }
+
 
     });
 

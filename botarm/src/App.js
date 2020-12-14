@@ -22,7 +22,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import startPolling from "./utils/polling";
 import Pusher from 'pusher-js';
 import API from './utils/API'; 
-import { SET_SENSOR_CONFIGURATION } from "./utils/actions"
+import { SET_ACTUAL_SENSOR_STATUS, SET_SENSOR_CONFIGURATION } from "./utils/actions"
 
 
 
@@ -36,6 +36,7 @@ function App() {
   useEffect(() => {
     checkLogin();
     loadInitial()
+    loadInitialSensorState()
     
     // Enable pusher logging - don't include this in production
      Pusher.logToConsole = false;
@@ -69,10 +70,10 @@ function App() {
     //else {push("/login")}
   }
   async function loadInitial() {
-    console.log("hello from loadInitial")
-    console.log(state)
+    // console.log("hello from loadInitial")
+    // console.log(state)
     const { data } = await API.getSensorConfig(state.email)
-    console.log(data)
+    // console.log(data)
     if(data != null){
     dispatch({
       action: SET_SENSOR_CONFIGURATION,
@@ -82,7 +83,19 @@ function App() {
     }
   }
 
+  async function loadInitialSensorState() {
+    console.log("hello from init sensor state")
+    console.log(state)
+    const { data } = await API.getSensor()
+    console.log(data)
+    if (data != null) {
+      dispatch({
+        action: SET_ACTUAL_SENSOR_STATUS,
+        actualSensorState: data
 
+      });
+    }
+  }
 
 
   return (
