@@ -14,6 +14,8 @@ console.log("--------------SMS HELPER------------")
  }
 var r = await API.sendSms({text, to})
 console.log(r)
+var storeHistory = await API.saveEvent(sensorResponse);
+console.log(storeHistory)
 }
 
 export default smsHelper

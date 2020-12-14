@@ -8,5 +8,5 @@ router.route("/")
     .post(sensorController.createSensorSettings);
 
 router.route("/one").post(sensorController.findOne)
-
+router.route("/save").post(sensorController.saveEvent)
 module.exports = router;

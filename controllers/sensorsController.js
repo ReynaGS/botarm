@@ -22,6 +22,13 @@ module.exports = {
         } else {
             res.json(null)
         }
+    },
+    saveEvent: async function (req, res) {
+        // const contactSensor = await db.EventHistory.create(req.body);
+        // res.json(contactSensor);
+        console.log(req.body);
+        res.send("hello");
+
     }
 
 };

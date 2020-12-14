@@ -16,6 +16,9 @@ export default {
     },
     sendSms: function(data){
         return axios.post("/api/sms", data)
+    }, 
+    saveEvent: function(data){
+        return axios.post("/api/sensors/save", data)
     }
 
 

@@ -73,11 +73,9 @@ function App() {
 
       }); 
       smsHelper(state, sensorResponse)
-      console.log("------------actual sensor state-----------------------")
-
-      console.log("-----------------------------------------------------------------------"); 
-      console.log(response);
     });
+
+
    // loadMessage();
      //startPolling(state, dispatch, 30000);
   }, [state.apiToken])
