@@ -23,6 +23,7 @@ import startPolling from "./utils/polling";
 import Pusher from 'pusher-js';
 import API from './utils/API'; 
 import { SET_ACTUAL_SENSOR_STATUS, SET_SENSOR_CONFIGURATION } from "./utils/actions"
+import smsHelper from "./utils/smsHelper"
 
 
 
@@ -46,9 +47,36 @@ function App() {
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function (data) {
-      console.log("este es")
-      console.log(JSON.stringify(data));
+    channel.bind('my-event', function (response) {
+      var sensorResponse={}; 
+     if (response.hasOwnProperty("data")){
+      sensorResponse = response.data
+
+     }else{
+      sensorResponse = response
+     }
+      console.log("-----------------------------------------------------------------------"); 
+      console.log(sensorResponse); 
+      var zoneIndex = state.actualSensorState.findIndex((sensor)=>{
+        return sensor.zone == sensorResponse.zone
+      })
+      if(zoneIndex >= 0 ){
+        state.actualSensorState.splice(zoneIndex,1,sensorResponse)
+      }else{
+        state.actualSensorState.push(sensorResponse)
+      } 
+      console.log("------------actual sensor state-----------------------")
+      console.log(state.actualSensorState)
+      dispatch({
+        action: SET_ACTUAL_SENSOR_STATUS,
+        actualSensorState: [...state.actualSensorState]
+
+      }); 
+      smsHelper(state, sensorResponse)
+      console.log("------------actual sensor state-----------------------")
+
+      console.log("-----------------------------------------------------------------------"); 
+      console.log(response);
     });
    // loadMessage();
      //startPolling(state, dispatch, 30000);
@@ -70,10 +98,9 @@ function App() {
     //else {push("/login")}
   }
   async function loadInitial() {
-    // console.log("hello from loadInitial")
-    // console.log(state)
+   
     const { data } = await API.getSensorConfig(state.email)
-    // console.log(data)
+    
     if(data != null){
     dispatch({
       action: SET_SENSOR_CONFIGURATION,
@@ -84,18 +111,15 @@ function App() {
   }
 
   async function loadInitialSensorState() {
-    console.log("hello from init sensor state")
-    console.log(state)
     const { data } = await API.getSensor()
-    console.log(data)
-    console.log("Console log despues de la 90 ------------------------")
-    // if (data != null) {
-    //   dispatch({
-    //     action: SET_ACTUAL_SENSOR_STATUS,
-    //     actualSensorState: data
+    
+    if (data != null) {
+      dispatch({
+        action: SET_ACTUAL_SENSOR_STATUS,
+        actualSensorState: data
 
-    //   });
-    // }
+      });
+    }
   }
 
 
@@ -106,12 +130,12 @@ function App() {
         <NavBar/>
         <Switch>
             <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute exact path="/home" component={Home}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/settings" component={SensorSetting} />
-            <Route exact path="/history" component={History} />
-            <Route exact path="/logout" component={Login} />
+            <PrivateRoute exact path="/settings" component={SensorSetting} />
+            <PrivateRoute exact path="/history" component={History} />
+            <PrivateRoute exact path="/logout" component={Login} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
         <Footer/>

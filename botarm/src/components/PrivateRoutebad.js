@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import {
     BrowserRouter as Router,
     Route,
@@ -9,31 +9,24 @@ import {
 import { useStoreContext } from "../utils/GlobalState";
 function PrivateRoute({ children, ...rest }) {
     const [state, dispatch] = useStoreContext();
-    console.log(state)
+ console.log(state)
 
-
+    
     return (
         <Route
             {...rest}
             render={({ location }) =>
-
-                state.email ? (
-
+                
+          
+                    
                     <Redirect
                         to={{
                             pathname: "/login",
                             state: { from: location }
                         }}
                     />
-
-                ) : (
-                        <Redirect
-                            to={{
-                                pathname: "/login",
-                                state: { from: location }
-                            }}
-                        />
-                    )
+                    
+             
             }
         />
     );

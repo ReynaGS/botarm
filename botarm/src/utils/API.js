@@ -13,6 +13,9 @@ export default {
     getSensorConfig: function (email){
         console.log(email)
         return axios.post("/api/sensors/one", {email:email})
+    },
+    sendSms: function(data){
+        return axios.post("/api/sms", data)
     }
 
 
