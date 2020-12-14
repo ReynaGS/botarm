@@ -14,6 +14,8 @@ module.exports = {
 
     },
     findOne: async function (req, res) {
+        const email = req.body.email
+        console.log(req.body)
         const settings = await db.ContactSensor.findOne({ email });
         if (settings != null) {
             res.json(settings)

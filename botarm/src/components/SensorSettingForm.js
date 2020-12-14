@@ -3,6 +3,7 @@ import React, {useRef, useState} from "react";
 import SelectOption from "../components/SelectOption"
 import API from "../utils/API"
 import { useStoreContext } from "../utils/GlobalState";
+import { SET_SENSOR_CONFIGURATION} from "../utils/actions"
 
 const zones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -29,8 +30,12 @@ function SensorSettingForm (){
         console.log(settings)
         const {data} = await API.createSettings(settings)
         console.log(data)
-        
-
+        dispatch({
+            action: SET_SENSOR_CONFIGURATION,
+            sensorConfiguration: data
+            
+        });
+        console.log(state)
     }
 
     const addSensorHandle = ()=>{

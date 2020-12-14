@@ -1,4 +1,4 @@
-import React , {useEffect} from "react";
+import React , {useEffect, useHistory} from "react";
 // import logo from './logo.svg';
 // import { StoreProvider } from "./utils/GlobalState";
 // import DisplaySensorState from "./components/DisplaySensorState"
@@ -15,19 +15,40 @@ import Login from "./pages/Login";
 import History from "./pages/History";
 import Signup from "./pages/Signup";
 import SensorSetting from "./pages/SensorSetting"; 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import { useStoreContext } from "./utils/GlobalState";
 import axios from "axios";
 import PrivateRoute from "./components/PrivateRoute";
+import startPolling from "./utils/polling";
+import Pusher from 'pusher-js';
+import API from './utils/API'; 
+import { SET_SENSOR_CONFIGURATION } from "./utils/actions"
 
 
+
+
+//https://pusher.com/tutorials/react-websockets
 function App() {
 
   const [state, dispatch] = useStoreContext();
+  // const { push } = useHistory();
 
   useEffect(() => {
     checkLogin();
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = false;
+
+    var pusher = new Pusher('6ef349c7143e05ce7ff2', {
+      cluster: 'us2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function (data) {
+      console.log("este es")
+      console.log(JSON.stringify(data));
+    });
    // loadMessage();
+     //startPolling(state, dispatch, 30000);
   }, [state.apiToken])
 
   const checkLogin = () => {
@@ -40,20 +61,23 @@ function App() {
         action: "LOGIN",
         email: user.email,
         apiToken: user.token
+
       });
     }
+    //else {push("/login")}
   }
+  async function loadInitial() {
+    console.log("hello from loadInitial")
+    console.log(state)
+    const { data } = await API.getSensorConfig(state.email)
+    console.log(data)
+    dispatch({
+      action: SET_SENSOR_CONFIGURATION,
+      sensorConfiguration: data
 
-  // const loadMessage = () => {
-  //   axios.get("/api/welcome", {
-  //     headers: {
-  //       Authorization: `Bearer ${state.apiToken}`
-  //     }
-  //   }).then(({ data }) => {
-  //     const { message } = data;
-  //     dispatch({ type: "GET_MESSAGE", message })
-  //   })
-  // }
+    });
+
+  }
 
 
 

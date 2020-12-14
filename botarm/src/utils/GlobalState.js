@@ -53,10 +53,7 @@ const StoreProvider = ({ value = [], ...props }) => {
         email:"", 
         apiToken:"",
         sensorConfiguration: {
-            url: "",
-            contactPhone:"",
-            sensorStateConfig:[], 
-            email: ""
+           
 
         }
 
