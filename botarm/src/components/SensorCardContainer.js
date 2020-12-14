@@ -5,21 +5,24 @@ import { useStoreContext } from "../utils/GlobalState"
 function SensorCardContainer(){
     const [state, dispatch] = useStoreContext();
     console.log(state)
-    // const sensorsCard = state.sensorConfiguration.sensorStateConfig.map((sensor)=>{
-    //     return (<div className="column">
+    const sensorsCard = state.sensorConfiguration.sensorStateConfig.map((sensor)=>{
+        return (<div className="column">
     
-    //         <SensorCard />
+            <SensorCard config= {sensor}/>
 
-    //     </div>)
+        </div>)
         
 
-    // })
+    })
     return(
         <div>
         
         <div className="columns">
 
-            {/* {sensorsCard}  */}
+            {state.sensorConfiguration.sensorStateConfig.length == 0 ? <h3>Please Go to Sensor Settings</h3>
+            :sensorsCard} 
+            
+
                
                 
         </div>

@@ -20,7 +20,7 @@ module.exports = {
         if (settings != null) {
             res.json(settings)
         } else {
-            res.json({ "found": false })
+            res.json(null)
         }
     }
 

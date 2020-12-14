@@ -35,8 +35,10 @@ function App() {
 
   useEffect(() => {
     checkLogin();
+    loadInitial()
+    
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = false;
+     Pusher.logToConsole = false;
 
     var pusher = new Pusher('6ef349c7143e05ce7ff2', {
       cluster: 'us2'
@@ -71,12 +73,13 @@ function App() {
     console.log(state)
     const { data } = await API.getSensorConfig(state.email)
     console.log(data)
+    if(data != null){
     dispatch({
       action: SET_SENSOR_CONFIGURATION,
       sensorConfiguration: data
 
     });
-
+    }
   }
 
 

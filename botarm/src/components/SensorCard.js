@@ -1,6 +1,7 @@
 import React from "react"; 
 
-function SensorCard(){
+
+function SensorCard(props){
     return(
 
     <div className="card">
@@ -15,12 +16,12 @@ function SensorCard(){
         
       </div>
       <div className="media-content">
-        <p className="title is-4">Front Door Sensor</p>
+    <p className="title is-4">{props.config.zoneName}</p>
       </div>
     </div>
 
     <div className="content">
-                The Front Door is Currently : OPEN!
+            OPEN!
       <br/>
      
     </div>
