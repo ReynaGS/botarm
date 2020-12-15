@@ -24,11 +24,15 @@ module.exports = {
         }
     },
     saveEvent: async function (req, res) {
-        // const contactSensor = await db.EventHistory.create(req.body);
-        // res.json(contactSensor);
-        console.log(req.body);
-        res.send("hello");
-
+        const contactSensor = await db.History.create(req.body);
+        res.json(contactSensor);
+        // console.log(req.body);
+        // res.send("hello");
+    },
+    getHistory: async function (req, res) {
+        const email = req.body.email
+        const history = await db.History.find({ email })
+        res.json(history);
     }
 
 };

@@ -73,6 +73,7 @@ function App() {
 
       }); 
       smsHelper(state, sensorResponse)
+    
     });
 
 
@@ -131,8 +132,8 @@ function App() {
             <PrivateRoute exact path="/home" component={Home}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <PrivateRoute exact path="/settings" component={SensorSetting} />
-            <PrivateRoute exact path="/history" component={History} />
+            <Route exact path="/settings" component={SensorSetting} />
+            <Route exact path="/history" component={History} />
             <PrivateRoute exact path="/logout" component={Login} />
             {/* <Route component={NoMatch} /> */}
           </Switch>

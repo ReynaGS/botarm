@@ -9,8 +9,9 @@ router.get("/welcome", (req, res) => {
 });
 router.post("/sms", (req, res) => {
     console.log(req.body)
-    sendSMS.send(req.body.to, "13052787274", req.body.text)
     res.json({ message: "You have gone full MERN!!!" });
+    sendSMS.send(req.body.to, "13052787274", req.body.text)
+
 })
 
 

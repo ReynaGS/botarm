@@ -10,11 +10,15 @@ async function smsHelper(state, sensorResponse){
 console.log("--------------SMS HELPER------------") 
  console.log(zoneConfig)
  if(zoneConfig != null){
+     var currentTime = Date().toLocaleString();
    text = zoneConfig.zoneName + " is " + sensorStatusSms
+     var emailToEvent = { date:currentTime, state: sensorStatusSms, zone: zoneConfig.zoneName, email: state.email };
+     var storeHistory = await API.saveEvent(emailToEvent);
+
  }
 var r = await API.sendSms({text, to})
 console.log(r)
-var storeHistory = await API.saveEvent(sensorResponse);
+   
 console.log(storeHistory)
 }
 

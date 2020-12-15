@@ -1,4 +1,5 @@
 module.exports = {
   User: require("./User"),
-  ContactSensor: require("./ContactSensor")
+  ContactSensor: require("./ContactSensor"),
+  History: require("./History")
 }

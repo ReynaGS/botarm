@@ -19,7 +19,11 @@ export default {
     }, 
     saveEvent: function(data){
         return axios.post("/api/sensors/save", data)
+    }, 
+    getHistory: function (email) {
+        return axios.post("/api/sensors/history", email)
     }
+
 
 
 };

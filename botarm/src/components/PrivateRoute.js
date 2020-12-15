@@ -10,6 +10,7 @@ import { useStoreContext } from "../utils/GlobalState";
 function PrivateRoute({ children, ...rest }) {
     const [state, dispatch] = useStoreContext();
     console.log(rest)
+    console.log(state)
 
 
     return (
