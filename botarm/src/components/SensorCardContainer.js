@@ -14,17 +14,22 @@ function SensorCardContainer(){
         
 
     })
+    function newSettingsConfig(){
+        return (
+            <div className="column">
+                <h2>Please go to <a href="/settings">Settings</a></h2>
+            </div>
+        )
+    }
     return(
         <div>
         
         <div className="columns">
 
-            {state.sensorConfiguration.sensorStateConfig.length == 0 ? <h3>Please Go to Sensor Settings</h3>
+            {state.sensorConfiguration.sensorStateConfig.length == 0 ?
+             newSettingsConfig()
             :sensorsCard} 
-            
-
-               
-                
+                   
         </div>
 
         

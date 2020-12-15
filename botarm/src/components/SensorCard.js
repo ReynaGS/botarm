@@ -42,11 +42,11 @@ function SensorCard(props){
      
     </div>
   </div>
-            <footer className="card-footer">
+            {/* <footer className="card-footer">
                 
                 <a href="#" className="card-footer-item">Edit</a>
                 <a href="#" className="card-footer-item">Remove</a>
-            </footer>
+            </footer> */}
 </div>
     )
 }

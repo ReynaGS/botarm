@@ -21,7 +21,7 @@ function NavBar (){
                     
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link">
-                            RG
+                           Account
                         </a>
                         <div className="navbar-dropdown">
                             
